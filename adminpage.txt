@@ -1,0 +1,201 @@
+import 'package:flutter/material.dart';
+import 'package:halal/Admin/user_management.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class AdminPage extends StatelessWidget {
+  const AdminPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Admin Dashboard',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.black,
+      ),
+      backgroundColor: Colors.black,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 16.0),
+
+// Display User Count Card
+            FutureBuilder<int>(
+              future: fetchUserCount(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  int userCount = snapshot.data ?? 0;
+                  return Container(
+                    width: 300.0, // Set the desired width
+                    height: 120.0, // Set the desired height
+                    child: Card(
+                      color: Colors.green,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          mainAxisAlignment:
+                              MainAxisAlignment.center, // Center content
+                          children: [
+                            Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.center, // Center content
+                              children: [
+                                Icon(
+                                  Icons.person,
+                                  color: Colors.white,
+                                  size: 32.0, // Increased icon size
+                                ),
+                                SizedBox(width: 8.0),
+                                Text(
+                                  'User Count',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Text(
+                              userCount.toString(),
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
+
+            const SizedBox(height: 10.0),
+
+            // Display Product Count Card
+            FutureBuilder<int>(
+              future: fetchProductCount(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  int productCount = snapshot.data ?? 0;
+                  return Container(
+                    width: 300.0, // Set the desired width
+                    height: 120.0, // Set the desired height
+                    child: Card(
+                      color: Colors.orange,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          mainAxisAlignment:
+                              MainAxisAlignment.center, // Center content
+                          children: [
+                            Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.center, // Center content
+                              children: [
+                                Icon(
+                                  Icons.verified_user,
+                                  color: Colors.white,
+                                  size: 32.0, // Increased icon size
+                                ),
+                                SizedBox(width: 8.0),
+                                Text(
+                                  'Product Halal Count',
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 8.0),
+                            Text(
+                              productCount.toString(),
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              },
+            ),
+
+            const SizedBox(height: 16.0),
+
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UserManagementPage()),
+                );
+              },
+              child: Card(
+                color: Colors.blue,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.people,
+                            color: Colors.white,
+                            size: 32.0, // Increased icon size
+                          ),
+                          SizedBox(width: 8.0),
+                          Text(
+                            'User Management',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<int> fetchUserCount() async {
+    QuerySnapshot<Map<String, dynamic>> userSnapshot =
+        await FirebaseFirestore.instance.collection('users').get();
+    return userSnapshot.size;
+  }
+
+  Future<int> fetchProductCount() async {
+    QuerySnapshot<Map<String, dynamic>> productSnapshot =
+        await FirebaseFirestore.instance.collection('products').get();
+    return productSnapshot.size;
+  }
+}

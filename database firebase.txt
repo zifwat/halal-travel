@@ -1,0 +1,45 @@
+database firebase
+
+collection ID : users , 
+document ID : huAmsn7jayXfIeXs49e3fiXwSmG3
+fields :
+email :"adi@gmail.com"	
+password : 
+name : "TokAdi"	
+role :  "admin"
+
+
+
+collection ID : products , 
+document ID : 9556007001386 
+fields :
+Ingredients: "Water, Cane Sugar. Winter Melon Juice, Flavouring Substance, Colouring and Steviol Glycosides"
+Status: "Halal"
+productName : "Winter Melon"
+category : "drinks"
+
+
+collection ID : landmarks , 
+document ID : TnH1NYj1dFVMlNKrxcIm
+fields :
+description :" Explore the stunning architecture and historical significance of the Grand Palace and the Temple of the Emerald Buddha."
+(string)
+name :"Grand Palace and Wat Phra Kaew"
+(string)
+place: "Bangkok"
+
+
+collection ID : itinerary , 
+document ID : HfKMP8HDxHs4dz3eHVVi
+fields :
+created_at :""
+(timestamp)
+itineraryName :""
+(string)
+mosque : ""
+places : ""
+restaurant : ""
+userId : ""
+
+
+           

@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "866175471777",
+    "project_id": "halal-travel-3b4b3",
+    "storage_bucket": "halal-travel-3b4b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866175471777:android:abbaa6656845e00fca60e0",
+        "android_client_info": {
+          "package_name": "com.example.first_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7gEqCg-WtdJz1pMGv_75YpIMxp2lhoZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866175471777:android:271518a002019346ca60e0",
+        "android_client_info": {
+          "package_name": "com.example.halal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7gEqCg-WtdJz1pMGv_75YpIMxp2lhoZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:866175471777:android:415ceeac3893cce2ca60e0",
+        "android_client_info": {
+          "package_name": "com.example.halal_apps"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7gEqCg-WtdJz1pMGv_75YpIMxp2lhoZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
